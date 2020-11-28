@@ -25,7 +25,7 @@
           <td><%= emp._id %> </td>
           <td><%= emp.firstName %> <%= emp.lastName %> </td>
           <td><%= emp.email %> </td>
-          <td><a href="" class="btn btn-info btn-block btn-sm">Details</a></td>
+          <td><a href="" data-toggle="modal" data-target="#employeeDetails<%=emp._id%>" class="btn btn-info btn-block btn-sm">Details</a></td>
           <td><a href="" class="btn btn-warning btn-block btn-sm">Edit</a></td>
           <td><a href="" class="btn btn-danger btn-block btn-sm">Delete</a></td>
         </tr>
@@ -35,8 +35,57 @@
   </div>
 </div>
 
+<!-- ADD EMPLOYEE MODAL -->
+<% for(let emp of employees){ %>
+  <div class="modal fade" id="employeeDetails<%=emp._id%>" tabindex="-1" aria-labelledby="employeeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-muted">
+            <%= emp.firstName %>`s Details 
+          </h5>
+          <button class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <tr>
+              <th>ID</th>
+              <td><%= emp._id %> </td>
+            </tr>
+            <tr>
+              <th>First Name</th>
+              <td><%= emp.firstName %> </td>
+            </tr>
+            <tr>
+              <th>Last Name</th>
+              <td><%= emp.lastName %> </td>
+            </tr>
+            <tr>
+              <th>Email Address</th>
+              <td><%= emp.email %> </td>
+            </tr>
+            <tr>
+              <th>Phone Number</th>
+              <td><%= emp.phoneNum %> </td>
+            </tr>
+            <tr>
+              <th>Job Title</th>
+              <td><%= emp.job %> </td>
+            </tr>
+            <tr>
+              <th>Date Joined</th>
+              <td><%= emp.createdAt %> </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
 
-
+<!-- EMPLOYEE DETAILS MODAL -->
 <div class="modal fade" id="employee_modal" tabindex="-1" aria-labelledby="employeeLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -18,11 +18,18 @@ router.route('/')
 });
 
 router.route('/:id')
-.get((req, res)=>{
-
+.get(async (req, res)=>{
+  const {id} = req.params;
+  const employee = await Employee.findById(id)
+  res.render('employee/detailPage',{
+    employee
+  })
 })
-
-router.route('/')
-
+.put(async(req, res)=>{
+  const {id}= req.params;
+  const employee = await Employee.findByIdAndUpdate(id, req.body);
+  await employee.save()
+  res.redirect(`/employee/${employee._id}`);
+})
 
 module.exports = router;
