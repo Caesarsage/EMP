@@ -9,7 +9,8 @@ const EmployeeSchema = new Schema ({
   phoneNum: Number,
   job: String,
 },
-{timestamps: true});
+{timestamps: true}
+);
 
 const Employee = mongoose.model('Employee', EmployeeSchema);
 

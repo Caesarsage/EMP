@@ -4,7 +4,8 @@ const MethodOverride = require('method-override');
 const chalk = require('chalk');
 const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
-const dashRoute = require('./routes/dashboardRoute');
+
+const employeeRoute = require('./routes/employeeRoute');
 
 const app = express();
 
@@ -29,11 +30,11 @@ app.use(express.urlencoded({extended:true}));
 app.use(MethodOverride('_method'));
 
 app.get('/', (req, res)=>{
-  res.redirect('/admin')
+  res.render('dashboard/index')
 })
 
 // Routes
-app.use('/dashboard', dashRoute);
+app.use('/employee', employeeRoute);
 
 // Listening
 const PORT = process.env.PORT || 3000;
