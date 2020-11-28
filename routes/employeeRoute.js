@@ -10,9 +10,17 @@ router.route('/')
       employees
     }
   )
+})
+.post(async(req, res)=>{
+  const employee = new Employee(req.body);
+  await employee.save();
+  res.redirect('/employee');
 });
 
-
+router.route('/new')
+.get((req, res)=>{
+  res.render('employee/new')
+});
 
 router.route('/')
 
