@@ -7,7 +7,12 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["EmployeeManagementApp", "employee", "management-app", "EMA"],
+  "keywords": [
+    "EmployeeManagementApp",
+    "employee",
+    "management-app",
+    "EMA"
+  ],
   "author": "Caesarsaeg",
   "license": "ISC",
   "dependencies": {
@@ -15,6 +20,7 @@
     "ejs": "^3.1.5",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.10.10"
   }
