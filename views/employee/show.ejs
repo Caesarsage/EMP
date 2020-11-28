@@ -5,7 +5,7 @@
     <div class="col-md-3">
       <div class="list-group">
         <div class="list-group-item active">Employee Data</div>
-          <a href="/employee/new" class="list-group-item">Add Employee</a>
+          <a href="" class="list-group-item" data-toggle="modal" data-target="#employee_modal">Add Employee</a>
           <a href="" class="list-group-item">View all Employee</a>
         
       </div>
@@ -31,6 +31,65 @@
         </tr>
         <% } %>
       </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="employee_modal" tabindex="-1" aria-labelledby="employeeLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted">
+          Add Employee
+        </h5>
+        <button class="btn-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/employee" method="POST" novalidate class="validated-form">
+          <div class="mb-3">
+            <label class="form-label" for="firstName">First Name</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input class="form-control" type="text" name="lastName" id="lastName" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="phoneNum">Phone Number</label>
+            <input class="form-control" type="number" name="phoneNum" id="phoneNum" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="job">Job Title</label>
+            <input class="form-control" type="text" name="job" id="job" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-success">submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

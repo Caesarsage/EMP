@@ -17,10 +17,10 @@ router.route('/')
   res.redirect('/employee');
 });
 
-router.route('/new')
+router.route('/:id')
 .get((req, res)=>{
-  res.render('employee/new')
-});
+
+})
 
 router.route('/')
 
