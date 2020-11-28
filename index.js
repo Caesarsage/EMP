@@ -20,6 +20,6 @@ app.use(MethodOverride('_method'));
 // Listening
 const PORT = process.env.PORT || 3000;
 
-app.listen(()=>{
+app.listen(PORT, ()=>{
   console.log(`connecting at port ${chalk.yellow(PORT)}`);
 })
