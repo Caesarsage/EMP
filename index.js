@@ -3,10 +3,20 @@ const path = require('path');
 const MethodOverride = require('method-override');
 const chalk = require('chalk');
 const ejsMate = require('ejs-mate');
-
-const adminRoute = require('./routes/adminRoute');
+const mongoose = require('mongoose');
+const dashRoute = require('./routes/dashboardRoute');
 
 const app = express();
+
+// Creating DB
+mongoose.connect('mongodb://localhost:27017/EMP',{useCreateIndex:true,useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{
+  console.log(chalk.yellow('CONNECTED CORRECTLY'));
+})
+.catch(err => {
+  console.log('error occur');
+  console.log(err);
+});
 
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
@@ -23,7 +33,7 @@ app.get('/', (req, res)=>{
 })
 
 // Routes
-app.use('/admin', adminRoute);
+app.use('/dashboard', dashRoute);
 
 // Listening
 const PORT = process.env.PORT || 3000;
