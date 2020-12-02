@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const chalk = require('chalk')
 
-const Employee = require('../model/employeeModel');
+const Job = require('../model/jobListModel');
 // Creating DB
 mongoose.connect('mongodb://localhost:27017/EMP',{useCreateIndex:true,useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>{
@@ -13,17 +13,15 @@ mongoose.connect('mongodb://localhost:27017/EMP',{useCreateIndex:true,useNewUrlP
 });
 
 const seedDB = async ()=>{
-  await Employee.deleteMany({});
+  await Job.deleteMany({});
   for (let i = 0; i < 5; i++) {
-    const blog = new Employee({
-      firstName: 'Destiny',
-      lastName: 'Erhabor',
-      email: 'destinyerhabor6@gmail.com',
-      joiningDate: Date.now(),
-      phoneNum: 8108968504,
-      job: 'Web Developer'
+    const job = new Job({
+     name: 'web master',
+     description: 'lorem epsum'
+      // job: 'Web Developer'
     });
-    await blog.save()
+    // Employee.job.push(job);
+    await job.save()
   }
 }
 

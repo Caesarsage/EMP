@@ -34,7 +34,8 @@ app.get('/', (req, res)=>{
 })
 
 // Routes
-app.use('/employee', employeeRoute);
+app.use('/admin/employee', employeeRoute);
+// app.use('/admin/jobs')
 
 // Listening
 const PORT = process.env.PORT || 3000;

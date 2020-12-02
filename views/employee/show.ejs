@@ -28,7 +28,7 @@
             <td><%= emp.email %> </td>
             <td><a href="" data-toggle="modal" data-target="#employeeDetails<%=emp._id%>" class="btn btn-info btn-block btn-sm">Details</a></td>
             <td><a href="" data-toggle="modal" data-target="#employeeEdit<%=emp._id%>" class="btn btn-warning btn-block btn-sm">Edit</a></td>
-            <form action="/employee/<%=emp._id%>?_method=DELETE" method="POST">
+            <form action="/admin/employee/<%=emp._id%>?_method=DELETE" method="POST">
               <td>
                 <button class="btn btn-danger btn-block btn-sm" onclick="alert('Are you sure of this action?')">Delete</button>
               </td>
@@ -166,7 +166,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="/employee/<%= emp._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+          <form action="/admin/employee/<%= emp._id%>?_method=PUT" method="POST" novalidate class="validated-form">
             <div class="mb-3">
               <label class="form-label" for="firstName">First Name</label>
               <input class="form-control" type="text" name="firstName" value="<%= emp.firstName %> " id="firstName" required>

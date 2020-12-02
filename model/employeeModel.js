@@ -5,9 +5,11 @@ const EmployeeSchema = new Schema ({
   firstName: String,
   lastName : String,
   email: String,
-  joiningDate: Date,
   phoneNum: Number,
-  job: String,
+  job: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Job'
+  }],
 },
 {timestamps: true}
 );

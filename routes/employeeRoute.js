@@ -5,7 +5,8 @@ const router = express.Router();
 
 router.route('/')
 .get(async(req, res)=>{
-  const employees = await Employee.find({});
+  const employees = await Employee.find({}).populate('job');
+  console.log(employees);
   res.render('employee/show',{
       employees
     }
@@ -14,7 +15,7 @@ router.route('/')
 .post(async(req, res)=>{
   const employee = new Employee(req.body);
   await employee.save();
-  res.redirect('/employee');
+  res.redirect('/admin/employee');
 });
 
 router.route('/:id')
@@ -29,13 +30,13 @@ router.route('/:id')
   const {id}= req.params;
   const employee = await Employee.findByIdAndUpdate(id, req.body);
   await employee.save()
-  res.redirect(`/employee`);
+  res.redirect(`/admin/employee`);
 })
 .delete(async(req, res)=>{
   const {id}= req.params;
   const employee = await Employee.findByIdAndDelete(id);
   console.log(employee);
-  res.redirect(`/employee`);  
+  res.redirect(`/admin/employee`);  
 })
 
 module.exports = router;
