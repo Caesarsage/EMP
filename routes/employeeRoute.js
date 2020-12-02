@@ -29,7 +29,7 @@ router.route('/:id')
   const {id}= req.params;
   const employee = await Employee.findByIdAndUpdate(id, req.body);
   await employee.save()
-  res.redirect(`/employee/${employee._id}`);
+  res.redirect(`/employee`);
 })
 
 module.exports = router;

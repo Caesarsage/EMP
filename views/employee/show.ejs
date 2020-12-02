@@ -2,35 +2,37 @@
 
 <div class="container-fluid">
   <div class="row mt-5">
-    <div class="col-md-3">
+    <div class="col-md-3 mb-3">
       <div class="list-group">
         <div class="list-group-item active">Employee Data</div>
           <a href="" class="list-group-item" data-toggle="modal" data-target="#employee_modal">Add Employee</a>
           <a href="" class="list-group-item">View all Employee</a>
-        
       </div>
     </div>
+
     <div class="col-md-9">
-      <table class="table table-striped table-hover bg-light">
-        <tr class="table-dark">
-          <th>ID</th>
-          <th>Full Name</th>
-          <th>Email</th>
-          <th>Details</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-        <% for(let emp of employees){ %>
-        <tr>
-          <td><%= emp._id %> </td>
-          <td><%= emp.firstName %> <%= emp.lastName %> </td>
-          <td><%= emp.email %> </td>
-          <td><a href="" data-toggle="modal" data-target="#employeeDetails<%=emp._id%>" class="btn btn-info btn-block btn-sm">Details</a></td>
-          <td><a href="" class="btn btn-warning btn-block btn-sm">Edit</a></td>
-          <td><a href="" class="btn btn-danger btn-block btn-sm">Delete</a></td>
-        </tr>
-        <% } %>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover bg-light">     
+          <tr class="table-dark">
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <% for(let emp of employees){ %>
+          <tr>
+            <td></td>
+            <td><%= emp.firstName %> <%= emp.lastName %> </td>
+            <td><%= emp.email %> </td>
+            <td><a href="" data-toggle="modal" data-target="#employeeDetails<%=emp._id%>" class="btn btn-info btn-block btn-sm">Details</a></td>
+            <td><a href="" data-toggle="modal" data-target="#employeeEdit<%=emp._id%>" class="btn btn-warning btn-block btn-sm">Edit</a></td>
+            <td><a href="" class="btn btn-danger btn-block btn-sm">Delete</a></td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
     </div>
   </div>
 </div>
@@ -49,36 +51,39 @@
           </button>
         </div>
         <div class="modal-body">
-          <table class="table">
-            <tr>
-              <th>ID</th>
-              <td><%= emp._id %> </td>
-            </tr>
-            <tr>
-              <th>First Name</th>
-              <td><%= emp.firstName %> </td>
-            </tr>
-            <tr>
-              <th>Last Name</th>
-              <td><%= emp.lastName %> </td>
-            </tr>
-            <tr>
-              <th>Email Address</th>
-              <td><%= emp.email %> </td>
-            </tr>
-            <tr>
-              <th>Phone Number</th>
-              <td><%= emp.phoneNum %> </td>
-            </tr>
-            <tr>
-              <th>Job Title</th>
-              <td><%= emp.job %> </td>
-            </tr>
-            <tr>
-              <th>Date Joined</th>
-              <td><%= emp.createdAt %> </td>
-            </tr>
-          </table>
+          <div class="table-responsive">
+              <table class="table table-bordered">
+              <tr>
+                <th>ID</th>
+                <td> </td>
+              </tr>
+              <tr>
+                <th>First Name</th>
+                <td><%= emp.firstName %> </td>
+              </tr>
+              <tr>
+                <th>Last Name</th>
+                <td><%= emp.lastName %> </td>
+              </tr>
+              <tr>
+                <th>Email Address</th>
+                <td><%= emp.email %> </td>
+              </tr>
+              <tr>
+                <th>Phone Number</th>
+                <td><%= emp.phoneNum %> </td>
+              </tr>
+              <tr>
+                <th>Job Title</th>
+                <td><%= emp.job %> </td>
+              </tr>
+              <tr>
+                <th>Date Joined</th>
+                <td><%= emp.createdAt %> </td>
+              </tr>
+            </table>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -142,3 +147,63 @@
     </div>
   </div>
 </div>
+
+<!-- EMPLOYEE EDIT DETAILS MODAL -->
+<% for(let emp of employees){ %>
+  <div class="modal fade" id="employeeEdit<%=emp._id%>" tabindex="-1" aria-labelledby="employeeLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-muted">
+            Edit Employee Details
+          </h5>
+          <button class="btn-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/employee/<%= emp._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+            <div class="mb-3">
+              <label class="form-label" for="firstName">First Name</label>
+              <input class="form-control" type="text" name="firstName" value="<%= emp.firstName %> " id="firstName" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="lastName">Last Name</label>
+              <input class="form-control" type="text" name="lastName" id="lastName" value="<%= emp.lastName %> " required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-control" type="email" name="email" id="email" value="<%= emp.email %> " required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="phoneNum">Phone Number</label>
+              <input class="form-control" type="number" name="phoneNum" id="phoneNum" value="<%= emp.phoneNum %> " required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="job">Job Title</label>
+              <input class="form-control" type="text" name="job" id="job" value="<%= emp.job %> " required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3">
+              <button class="btn btn-success">submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
