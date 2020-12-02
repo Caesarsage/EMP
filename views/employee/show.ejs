@@ -28,7 +28,11 @@
             <td><%= emp.email %> </td>
             <td><a href="" data-toggle="modal" data-target="#employeeDetails<%=emp._id%>" class="btn btn-info btn-block btn-sm">Details</a></td>
             <td><a href="" data-toggle="modal" data-target="#employeeEdit<%=emp._id%>" class="btn btn-warning btn-block btn-sm">Edit</a></td>
-            <td><a href="" class="btn btn-danger btn-block btn-sm">Delete</a></td>
+            <form action="/employee/<%=emp._id%>?_method=DELETE" method="POST">
+              <td>
+                <button class="btn btn-danger btn-block btn-sm" onclick="alert('Are you sure of this action?')">Delete</button>
+              </td>
+            </form>
           </tr>
           <% } %>
         </table>

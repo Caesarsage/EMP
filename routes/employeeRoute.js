@@ -31,5 +31,11 @@ router.route('/:id')
   await employee.save()
   res.redirect(`/employee`);
 })
+.delete(async(req, res)=>{
+  const {id}= req.params;
+  const employee = await Employee.findByIdAndDelete(id);
+  console.log(employee);
+  res.redirect(`/employee`);  
+})
 
 module.exports = router;
