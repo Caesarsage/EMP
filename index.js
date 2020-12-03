@@ -6,6 +6,9 @@ const ejsMate = require('ejs-mate');
 const mongoose = require('mongoose');
 
 const employeeRoute = require('./routes/employeeRoute');
+const jobRoute = require('./routes/jobListRoute');
+
+const ExpressError = require('./utils/ExpressError');
 
 const app = express();
 
@@ -35,7 +38,21 @@ app.get('/', (req, res)=>{
 
 // Routes
 app.use('/admin/employee', employeeRoute);
-// app.use('/admin/jobs')
+app.use('/admin/jobs', jobRoute)
+
+app.all('*', (req, res, next)=>{ 
+  next(new ExpressError('Page not found', 404))
+})
+
+app.use((err, req, res, next)=>{
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Something went wrong!!!, it's not your fault but ours" 
+  res.status(statusCode);
+  console.log(err);
+  // res.render('404', {
+  //   err
+  // })
+});
 
 // Listening
 const PORT = process.env.PORT || 3000;
