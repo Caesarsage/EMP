@@ -9,7 +9,7 @@ const EmployeeSchema = new Schema ({
   job: [{
     type: Schema.Types.ObjectId,
     ref: 'Job'
-  }],
+  }]
 },
 {timestamps: true}
 );
