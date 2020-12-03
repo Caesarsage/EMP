@@ -17,8 +17,10 @@ const seedDB = async ()=>{
   for (let i = 0; i < 5; i++) {
     const job = new Job({
      name: 'web master',
-     description: 'lorem epsum'
-      // job: 'Web Developer'
+     description: 'lorem epsum',
+     validThrough: Date.now() + 1000 * 60 * 60 * 24 * 7 ,
+     employmentType: 'Contract',
+     baseSalary: 50
     });
     // Employee.job.push(job);
     await job.save()
