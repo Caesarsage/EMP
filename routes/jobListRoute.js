@@ -35,6 +35,11 @@ router.route('/:id')
   console.log(job);
   res.redirect('/admin/jobs')
 }))
+.delete(async(req, res)=>{
+  const {id}= req.params;
+  const job = await Job.findByIdAndDelete(id);
+  res.redirect(`/admin/jobs`);  
+})
 
 
 module.exports = router;

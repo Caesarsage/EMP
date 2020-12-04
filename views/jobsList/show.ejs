@@ -29,7 +29,7 @@
             <td><a href="" data-toggle="modal" data-target="#job<%=job._id%>" class="btn btn-warning btn-block btn-sm">Edit</a></td>
             <form action="/admin/jobs/<%=job._id%>?_method=DELETE" method="POST">
               <td>
-                <button class="btn btn-danger btn-block btn-sm" onclick="alert('Are you sure of this action?')">Delete</button>
+                <button class="btn btn-danger btn-block btn-sm" onclick="alert('Are you sure of this action?:)')">Delete</button>
               </td>
             </form>
           </tr>
@@ -146,7 +146,6 @@
 
 <!-- JOB EDIT DETAILS MODAL -->
 <% for(let job of jobs) {%>
-
  <div class="modal fade" id="job<%=job._id%>" tabindex="-1" aria-labelledby="jobLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
