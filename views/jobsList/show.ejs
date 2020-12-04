@@ -41,7 +41,7 @@
 </div>
 
 
-<!-- EMPLOYEE DETAILS MODAL -->
+<!-- JOB DETAILS MODAL -->
 <% for(let job of jobs){ %>
   <div class="modal fade" id="jobDetails<%=job._id%>" tabindex="-1" aria-labelledby="employeeLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -144,6 +144,73 @@
   </div>
 </div>
 
-<!-- EMPLOYEE EDIT DETAILS MODAL -->
+<!-- JOB EDIT DETAILS MODAL -->
+<% for(let job of jobs) {%>
 
+ <div class="modal fade" id="job<%=job._id%>" tabindex="-1" aria-labelledby="jobLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted">
+          EDIT JOB
+        </h5>
+        <button class="btn-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/jobs/<%=job._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+          <div class="mb-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name" value="<%= job.name%>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="description">Job's Description</label>
+            <textarea name="description" class="form-control" id="" cols="5" rows="5" name="description" required>
+            <%= job.description%>
+            </textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="validThrough">Employment Expiration Date</label>
+            <input class="form-control" type="date" name="validThrough" value="<%=job.validThrough%>"  id="validThrough"required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="salary">Salary</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input class="form-control" type="number" name="baseSalary" id="salary" value="<%= job.baseSalary%>" required>
+              <span class="input-group-text">.00</span>
+            </div>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="employmentType">Job Type</label>
+            <input class="form-control" type="text" name="employmentType" id="employmentType" value="<%= job.employmentType%>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="mb-3">
+            <button class="btn btn-success">submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+  
+<% } %>  
 
