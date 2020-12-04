@@ -3,15 +3,17 @@ const Employee = require('../model/employeeModel');
 
 const router = express.Router();
 
+const catchAsync = require('../utils/asyncCatch');
+
 router.route('/')
-.get(async(req, res)=>{
+.get(catchAsync(async(req, res)=>{
   const employees = await Employee.find({}).populate('job');
   console.log(employees);
   res.render('employee/show',{
       employees
     }
   )
-})
+}))
 .post(async(req, res)=>{
   const employee = new Employee(req.body);
   await employee.save();
