@@ -79,7 +79,9 @@
               </tr>
               <tr>
                 <th>Job Title</th>
-                <td><%= emp.job %> </td>
+                <% for(let job of emp.job ){ %> 
+                  <td><%= job.name %> </td>
+                <%}%>
               </tr>
               <tr>
                 <th>Date Joined</th>
