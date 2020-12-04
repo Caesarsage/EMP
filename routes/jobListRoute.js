@@ -24,8 +24,17 @@ router.route('/')
   });
   await jobs.save();
   res.redirect(`/admin/jobs`);
-}))
+}));
 
+router.route('/:id')
+.put(catchAsync(async(req, res)=>{
+  const { id }= req.params;
+  const {name, description, validThrough, employmentType, baseSalary} = req.body;
+  const job = await Job.findByIdAndUpdate(id, {name, description, validThrough, employmentType, baseSalary});
+  await job.save();
+  console.log(job);
+  res.redirect('/admin/jobs')
+}))
 
 
 module.exports = router;

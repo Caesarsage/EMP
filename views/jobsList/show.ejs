@@ -159,7 +159,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="/admin/jobs/<%=job._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+        <form action="/admin/jobs/<%= job._id%>?_method=PUT" method="POST" novalidate class="validated-form">
           <div class="mb-3">
             <label class="form-label" for="name">Name</label>
             <input class="form-control" type="text" name="name" id="name" value="<%= job.name%>" required>
@@ -178,7 +178,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label" for="validThrough">Employment Expiration Date</label>
-            <input class="form-control" type="date" name="validThrough" value="<%=job.validThrough%>"  id="validThrough"required>
+            <input class="form-control" type="date" name="validThrough" value="<%=job.validThrough.toString()%>"  id="validThrough" required>
             <div class="valid-feedback">
               Looks good!
             </div>
