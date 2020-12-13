@@ -6,6 +6,12 @@ const EmployeeSchema = new Schema ({
   lastName : String,
   email: String,
   phoneNum: Number,
+  // ##################### add later
+  // DOB: Date,
+  // gender: {
+  //   type: String,
+  //   enum: ['Male', 'Female', 'Prefer Not to Say']
+  // },
   job: [{
     type: Schema.Types.ObjectId,
     ref: 'Job'

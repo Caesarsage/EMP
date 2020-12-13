@@ -49,9 +49,9 @@ app.use((err, req, res, next)=>{
   if (!err.message) err.message = "Something went wrong!!!, it's not your fault but ours" 
   res.status(statusCode);
   console.log(err);
-  // res.render('404', {
-  //   err
-  // })
+  res.render('404', {
+    err
+  })
 });
 
 // Listening

@@ -22,7 +22,7 @@ const seedDB = async ()=>{
       email: 'destinyerhabor6@gmail.com',
       joiningDate: Date.now(),
       phoneNum: 8108968504,
-      job: "5fc72308e2f82b21f09cd414"
+      // job: "5fc72308e2f82b21f09cd414"
     });
     await blog.save()
   }

@@ -1,5 +1,6 @@
 const express = require('express');
 const Job = require('../model/jobListModel');
+const Employee = require('../model/employeeModel');
 
 const catchAsync = require('../utils/asyncCatch');
 
@@ -8,6 +9,8 @@ const router = express.Router();
 router.route('/')
 .get(catchAsync(async(req, res)=>{
   const jobs = await Job.find({});
+  const employee = await Employee.find({});
+  console.log(employee);
   res.render('jobsList/show',{
     jobs
   }
@@ -22,6 +25,7 @@ router.route('/')
     employmentType, 
     baseSalary
   });
+
   await jobs.save();
   res.redirect(`/admin/jobs`);
 }));
